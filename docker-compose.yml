@@ -13,7 +13,7 @@ services:
       - influxdb
 
   influxdb:
-    image: influxdb:latest
+    image: influxdb:alpine
     volumes:
       - influxdb_data:/var/lib/influxdb2
     networks:
@@ -42,6 +42,7 @@ services:
       - ./grafana/datasources:/etc/grafana/provisioning/datasources
       - ./grafana/dashboards-provisioning:/etc/grafana/provisioning/dashboards
       - ./grafana/dashboards:/var/lib/grafana/dashboards
+      - grafana_data:/var/lib/grafana
     depends_on:
       - influxdb
 
@@ -51,3 +52,4 @@ networks:
 
 volumes:
   influxdb_data:
+  grafana_data:
